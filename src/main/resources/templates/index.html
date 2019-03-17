@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/js/jquery-1.12.4.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <style type="text/css">
+
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle!important;
+        }
+    </style>
+    <script th:inline="javascript">
+        function abc(){
+            var s = [[${id}]];
+            alert(s);
+        }
+    </script>
+</head>
+<body>
+   <div class="container col-md-8 col-md-offset-2">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+            <tr>
+                <Th class="col-md-2">编号</Th>
+                <Th class="col-md-2">姓名</Th>
+                <Th  class="col-md-2">年龄</Th>
+                <Th  class="col-md-2">操作</Th>
+            </tr>
+            <tr align="center" th:each="k,st:${list}">
+                <td th:text="${st.count}"></td>
+                <td th:text="${k.name}"></td>
+                <td th:text="${k.age}"></td>
+                <Td>
+                    <A href="#" class="btn btn-primary" th:href="@{|del/${k.id}|}">删除</A>
+                    <A href="#" class="btn btn-success">修改</A>
+                    <A href="#" class="btn btn-danger" th:onclick="'abc()'">添加</A>
+                </Td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+</html>
